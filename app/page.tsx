@@ -11,6 +11,7 @@ import { NavigationButton } from "@/components/NavigationButton"
 import { SocialLinks } from "@/components/SocialLinks"
 import { ReferenceCard } from "@/components/ReferenceCard"
 import { FeatureGrid } from "@/components/FeatureGrid"
+import { ContactFormDark } from "@/components/ContactFormDark"
 import {
   ArrowRight,
   Code,
@@ -570,17 +571,8 @@ export default function HomePage() {
             ))}
           </div>
 
-                      <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-3xl hover:shadow-blue-500/30 text-sm sm:text-base px-6 sm:px-8 py-4 transform hover:scale-110 transition-all duration-500 group relative overflow-hidden"
-              onClick={createEmailHandler(companyData.contact.email)}
-            >
-              <span className="relative z-10 font-semibold">Začnime projekt</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125 relative z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-center"></div>
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 animate-pulse"></div>
-            </Button>
+          <div className="mt-16">
+            <ContactFormDark />
           </div>
         </div>
       </section>
