@@ -26,6 +26,10 @@ module.exports = {
     'group-hover:to-green-600',
     'group-hover:from-purple-500',
     'group-hover:to-purple-600',
+    'animate-slide-in-from-right',
+    'animate-slide-out-to-right',
+    'animate-fade-in',
+    'animate-fade-out',
   ],
   theme: {
     extend: {
@@ -108,6 +112,30 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'slide-in-from-right': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'slide-out-to-right': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+      },
+      animation: {
+        'slide-in-from-right': 'slide-in-from-right 0.5s ease-out',
+        'slide-out-to-right': 'slide-out-to-right 0.3s ease-in',
+        'fade-in': 'fade-in 0.3s ease-out',
+        'fade-out': 'fade-out 0.3s ease-in',
       },
     },
   },
