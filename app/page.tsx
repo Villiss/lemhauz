@@ -31,6 +31,8 @@ export default function HomePage() {
   // Navbar mouse tracking
   const [navbarMousePosition, setNavbarMousePosition] = useState({ x: 0, y: 0 });
   const [isNavbarHovered, setIsNavbarHovered] = useState(false);
+  // Mobile sheet state
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -52,6 +54,16 @@ export default function HomePage() {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
+  };
+
+  // Handler for mobile navigation that scrolls first then closes sheet
+  const createMobileScrollHandler = (sectionId: string) => {
+    return () => {
+      scrollToSection(sectionId); // Scroll first
+      setTimeout(() => {
+        setIsSheetOpen(false); // Then close the sheet after a short delay
+      }, 200); // Small delay to let user see the scroll
+    };
   };
 
   return (
@@ -196,7 +208,7 @@ export default function HomePage() {
 
             {/* Mobile Sidebar */}
             <div className="md:hidden">
-              <Sheet>
+              <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-slate-600 hover:text-slate-900 hover:scale-110 transition-all duration-300">
                     <Menu className="h-6 w-6" />
@@ -211,7 +223,7 @@ export default function HomePage() {
                           <Logo 
                             size="sm" 
                               variant="minimal"
-                            onClick={() => scrollToSection('hero')}
+                            onClick={createMobileScrollHandler('hero')}
                           />
                             <div className="text-base font-bold text-slate-900 tracking-tight">
                             LEMHAUZ
@@ -226,7 +238,7 @@ export default function HomePage() {
                             {companyData.navigation.map((item) => (
                               <NavigationButton
                                 key={item.id}
-                                onClick={createScrollHandler(item.id)}
+                                onClick={createMobileScrollHandler(item.id)}
                                 variant="mobile"
                                 icon={getServiceIcon(item.icon)}
                               >
@@ -238,7 +250,7 @@ export default function HomePage() {
                         <div className="border-t pt-6">
                           <Button 
                             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-500 group relative overflow-hidden"
-                            onClick={createScrollHandler('kontakt')}
+                            onClick={createMobileScrollHandler('kontakt')}
                           >
                             <ArrowRight className="mr-2 h-4 w-4 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" />
                             <span className="relative z-10">Začať projekt</span>
