@@ -187,8 +187,8 @@ Tento projekt je licencovaný pod MIT License - pozrite si [LICENSE](LICENSE) s�
 ## 📞 Kontakt
 
 **Lemhauz s.r.o.**
-- 📧 Email: info@lemhauz.com
-- 📱 Telefón: +421 917 123 456
+- 📧 Email: info@lemhauz.sk
+- 📱 Telefón: +421 902 890 544
 - 🌐 Web: [lemhauz.sk](https://lemhauz.sk)
 - 📍 Lokalita: Bratislava, Slovensko
 

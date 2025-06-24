@@ -9,9 +9,9 @@ export const companyData: CompanyData = {
   founded: "2021",
   
   contact: {
-    email: "info@lemhauz.com",
-    phone: "+421 917 123 456",
-    phoneFormatted: "+421917123456",
+    email: "info@lemhauz.sk",
+    phone: "+421 902 890 544",
+    phoneFormatted: "+421902890544",
   },
   
   social: {
@@ -103,19 +103,19 @@ export const companyData: CompanyData = {
   contactCards: [
     {
       title: "Email",
-      content: "info@lemhauz.com",
+      content: "info@lemhauz.sk",
       icon: "Mail",
       backgroundColor: "bg-gradient-to-br from-blue-600 to-blue-700",
       hoverBackgroundColor: "group-hover:from-blue-500 group-hover:to-blue-600",
-      href: "mailto:info@lemhauz.com"
+      href: "mailto:info@lemhauz.sk"
     },
     {
       title: "Telefón", 
-      content: "+421 917 123 456",
+      content: "+421 902 890 544",
       icon: "Phone",
       backgroundColor: "bg-gradient-to-br from-green-600 to-green-700",
       hoverBackgroundColor: "group-hover:from-green-500 group-hover:to-green-600",
-      href: "tel:+421917123456"
+      href: "tel:+421902890544"
     },
     {
       title: "Lokalita",
