@@ -1,36 +1,202 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏢 Lemhauz - Digitálne riešenia pre váš úspech
 
-## Getting Started
+<div align="center">
+  <img src="/app/icon1.png" alt="Lemhauz Logo" width="120" height="120"/>
+  
+  **Moderná webová prezentácia pre IT riešenia a motokárovú akadémiu**
+  
+  [![Next.js](https://img.shields.io/badge/Next.js-15.3.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+  [![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+</div>
 
-First, run the development server:
+## 📋 O projekte
 
+Lemhauz je moderná, responzívna webová stránka vytvorená pre IT spoločnosť špecializujúcu sa na:
+
+- 💻 **Vývoj aplikácií & webov** - Mobilné aplikácie a webové stránky
+- 🎨 **Grafický dizajn** - Firemná identita a vizuálna komunikácia  
+- 🏗️ **Podniková architektúra** - IT procesy a systémové riešenia
+- 🏎️ **Motokárová akadémia** - Profesionálny tréning jazdy
+
+## ✨ Kľúčové funkcie
+
+- 🎨 **Moderný dizajn** s gradient pozadiami a glass-morphism efektmi
+- 📱 **Plne responzívne** rozloženie pre všetky zariadenia
+- ⚡ **Optimalizované výkony** s Next.js 15 a React 19
+- 🌈 **Interaktívne animácie** a hover efekty
+- 📧 **Kontaktné formuláre** s automatickým routingom
+- 🔍 **SEO optimalizované** s Open Graph meta tagmi
+- 🌐 **Slovenská lokalizácia**
+
+## 🛠️ Technológie
+
+### Frontend
+- **Next.js 15.3.4** - React framework s App Router
+- **React 19** - Používateľské rozhranie
+- **TypeScript 5** - Type-safe development
+- **Tailwind CSS 4** - Utility-first CSS framework
+
+### UI Komponenty
+- **Radix UI** - Accessible UI primitives
+- **Lucide React** - Moderné SVG ikony
+- **Class Variance Authority** - Conditional CSS classes
+- **Tailwind Merge** - Optimalizácia CSS tried
+
+### Vývojové nástroje
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **TypeScript** - Static type checking
+
+## 📦 Inštalácia
+
+### Predpoklady
+- Node.js 18+ 
+- npm, yarn, pnpm alebo bun
+
+### Kroky
+
+1. **Klonujte repozitár**
+```bash
+git clone https://github.com/lemhauz/lemhauz.git
+cd lemhauz
+```
+
+2. **Nainštalujte závislosti**
+```bash
+npm install
+# alebo
+yarn install
+# alebo
+pnpm install
+# alebo
+bun install
+```
+
+3. **Spustite vývojový server**
 ```bash
 npm run dev
-# or
+# alebo
 yarn dev
-# or
+# alebo
 pnpm dev
-# or
+# alebo
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Otvorte prehliadač**
+Prejdite na [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Dostupné scripty
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Spustí vývojový server
+npm run build    # Vytvorí produkčnú verziu
+npm run start    # Spustí produkčný server
+npm run lint     # Spustí ESLint kontrolu
+```
 
-## Learn More
+## 📁 Štruktúra projektu
 
-To learn more about Next.js, take a look at the following resources:
+```
+lemhauz/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Globálne štýly
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Hlavná stránka
+│   └── manifest.json      # PWA manifest
+├── components/            # React komponenty
+│   ├── ui/               # UI primitives
+│   ├── ContactCard.tsx   # Kontaktné karty
+│   ├── FeatureGrid.tsx   # Grid pre funkcie
+│   ├── ServiceCard.tsx   # Karty služieb
+│   └── ...
+├── lib/                  # Utility funkcie a dáta
+│   ├── data.ts          # Firemné dáta
+│   ├── types.ts         # TypeScript typy
+│   ├── utils.ts         # Helper funkcie
+│   └── navigation.ts    # Navigačné funkcie
+├── hooks/               # Custom React hooks
+├── public/              # Statické súbory
+└── ...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Dizajnový systém
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Farby
+- **Primárne**: Blue (#3B82F6) a Purple (#8B5CF6) gradienty
+- **Sekundárne**: Slate pre text a pozadia
+- **Akcentové**: Farebné varianty pre rôzne služby
 
-## Deploy on Vercel
+### Typografia
+- **Geist Sans** - Moderný sans-serif font
+- **Geist Mono** - Monospace pre kód
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Komponenty
+- Glass-morphism karty s backdrop blur
+- Gradient pozadia a hover efekty
+- Responzívne grid layouty
+- Interaktívne navigačné prvky
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📱 Responzívnosť
+
+- **Mobile First** prístup
+- **Breakpointy**: sm (640px), md (768px), lg (1024px), xl (1280px)
+- **Flexible grids** s automatickým prispôsobovaním
+- **Touch-friendly** interakcie
+
+## 🔧 Konfigurácia
+
+### Environment Variables
+Vytvorte `.env.local` súbor pre lokálne nastavenia:
+
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_CONTACT_EMAIL=info@lemhauz.com
+```
+
+### Tailwind CSS
+Konfigurácia v `tailwind.config.js` s custom témou a animáciami.
+
+## 🌐 Deployment
+
+### Vercel (Odporúčané)
+1. Push kód na GitHub
+2. Pripojte repozitár na [Vercel](https://vercel.com)
+3. Automatické deployment pri každom push
+
+### Iné platformy
+```bash
+npm run build    # Vytvorí optimalizovanú verziu
+npm run start    # Spustí produkčný server
+```
+
+## 🤝 Prispievanie
+
+1. Fork repozitár
+2. Vytvorte feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit zmeny (`git commit -m 'Add amazing feature'`)
+4. Push do branch (`git push origin feature/amazing-feature`)
+5. Otvorte Pull Request
+
+## 📄 Licencia
+
+Tento projekt je licencovaný pod MIT License - pozrite si [LICENSE](LICENSE) súbor pre detaily.
+
+## 📞 Kontakt
+
+**Lemhauz s.r.o.**
+- 📧 Email: info@lemhauz.com
+- 📱 Telefón: +421 917 123 456
+- 🌐 Web: [lemhauz.sk](https://lemhauz.sk)
+- 📍 Lokalita: Bratislava, Slovensko
+
+---
+
+<div align="center">
+  <strong>Vytvorené s ❤️ tímom Lemhauz</strong>
+  <br>
+  <em>Digitálne riešenia pre váš úspech</em>
+</div>
+# lemhauz
