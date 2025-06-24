@@ -105,24 +105,24 @@ export const companyData: CompanyData = {
       title: "Email",
       content: "info@lemhauz.com",
       icon: "Mail",
-      backgroundColor: "bg-blue-600",
-      hoverBackgroundColor: "group-hover:bg-blue-500",
+      backgroundColor: "bg-gradient-to-br from-blue-600 to-blue-700",
+      hoverBackgroundColor: "group-hover:from-blue-500 group-hover:to-blue-600",
       href: "mailto:info@lemhauz.com"
     },
     {
       title: "Telefón", 
       content: "+421 917 123 456",
       icon: "Phone",
-      backgroundColor: "bg-green-600",
-      hoverBackgroundColor: "group-hover:bg-green-500",
+      backgroundColor: "bg-gradient-to-br from-green-600 to-green-700",
+      hoverBackgroundColor: "group-hover:from-green-500 group-hover:to-green-600",
       href: "tel:+421917123456"
     },
     {
       title: "Lokalita",
       content: "Bratislava, Slovensko", 
       icon: "MapPin",
-      backgroundColor: "bg-purple-600",
-      hoverBackgroundColor: "group-hover:bg-purple-500",
+      backgroundColor: "bg-gradient-to-br from-purple-600 to-purple-700",
+      hoverBackgroundColor: "group-hover:from-purple-500 group-hover:to-purple-600",
       isClickable: false
     }
   ],

@@ -42,11 +42,13 @@ export function ContactCard({
     >
       <CardContent className="p-6 text-center space-y-4">
         <div className={cn(
-          "w-16 h-16 mx-auto rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:rotate-3 shadow-2xl",
+          "w-16 h-16 mx-auto rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:rotate-3 shadow-2xl relative overflow-hidden",
           backgroundColor,
           hoverBackgroundColor
         )}>
-          <Icon className="h-8 w-8 text-white transition-all duration-300 group-hover:scale-110" />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <Icon className="h-8 w-8 text-white transition-all duration-300 group-hover:scale-110 relative z-10" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-200 transition-colors duration-300">
