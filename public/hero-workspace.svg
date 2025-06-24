@@ -1,0 +1,64 @@
+<svg width="500" height="600" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="600" fill="#f8fafc"/>
+  
+  <!-- Desk -->
+  <rect x="50" y="450" width="400" height="120" rx="8" fill="#e2e8f0"/>
+  <rect x="60" y="460" width="380" height="100" rx="4" fill="#f1f5f9"/>
+  
+  <!-- Laptop -->
+  <rect x="150" y="350" width="200" height="120" rx="12" fill="#1e293b"/>
+  <rect x="160" y="360" width="180" height="100" rx="8" fill="#0f172a"/>
+  <rect x="170" y="370" width="160" height="80" rx="4" fill="#3b82f6"/>
+  
+  <!-- Code on screen -->
+  <rect x="180" y="380" width="60" height="4" rx="2" fill="#60a5fa"/>
+  <rect x="180" y="390" width="80" height="4" rx="2" fill="#34d399"/>
+  <rect x="180" y="400" width="40" height="4" rx="2" fill="#fbbf24"/>
+  <rect x="180" y="410" width="100" height="4" rx="2" fill="#f87171"/>
+  <rect x="180" y="420" width="70" height="4" rx="2" fill="#a78bfa"/>
+  
+  <!-- Coffee cup -->
+  <ellipse cx="100" cy="400" rx="20" ry="15" fill="#8b5cf6"/>
+  <ellipse cx="100" cy="395" rx="15" ry="10" fill="#a855f7"/>
+  <rect x="85" y="395" width="5" height="15" rx="2" fill="#8b5cf6"/>
+  
+  <!-- Phone -->
+  <rect x="350" y="380" width="60" height="100" rx="15" fill="#1e293b"/>
+  <rect x="355" y="385" width="50" height="90" rx="10" fill="#3b82f6"/>
+  <circle cx="380" cy="395" r="3" fill="#60a5fa"/>
+  
+  <!-- Mouse -->
+  <ellipse cx="120" cy="480" rx="15" ry="20" fill="#64748b"/>
+  <ellipse cx="120" cy="475" rx="10" ry="15" fill="#94a3b8"/>
+  
+  <!-- Keyboard -->
+  <rect x="160" y="480" width="120" height="40" rx="8" fill="#475569"/>
+  <rect x="170" y="490" width="100" height="20" rx="4" fill="#64748b"/>
+  
+  <!-- Books -->
+  <rect x="300" y="420" width="15" height="60" fill="#ef4444"/>
+  <rect x="320" y="415" width="15" height="65" fill="#22c55e"/>
+  <rect x="340" y="425" width="15" height="55" fill="#f59e0b"/>
+  
+  <!-- Plant -->
+  <ellipse cx="80" cy="380" rx="25" ry="8" fill="#64748b"/>
+  <path d="M 80 380 Q 70 350 65 320" stroke="#22c55e" stroke-width="3" fill="none"/>
+  <path d="M 80 380 Q 90 350 95 320" stroke="#22c55e" stroke-width="3" fill="none"/>
+  <ellipse cx="65" cy="320" rx="8" ry="12" fill="#16a34a"/>
+  <ellipse cx="95" cy="320" rx="8" ry="12" fill="#16a34a"/>
+  
+  <!-- Floating icons -->
+  <circle cx="400" cy="150" r="30" fill="#3b82f6" opacity="0.1"/>
+  <rect x="390" y="140" width="20" height="20" rx="2" fill="#3b82f6"/>
+  
+  <circle cx="100" cy="200" r="25" fill="#8b5cf6" opacity="0.1"/>
+  <polygon points="100,190 110,210 90,210" fill="#8b5cf6"/>
+  
+  <circle cx="450" cy="300" r="35" fill="#10b981" opacity="0.1"/>
+  <circle cx="450" cy="300" r="12" fill="#10b981"/>
+  
+  <!-- Background shapes -->
+  <circle cx="450" cy="100" r="80" fill="#ddd6fe" opacity="0.3"/>
+  <circle cx="50" cy="120" r="60" fill="#bfdbfe" opacity="0.3"/>
+</svg> 

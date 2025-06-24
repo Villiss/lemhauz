@@ -1,0 +1,83 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="500" fill="#f8fafc"/>
+  
+  <!-- Office background -->
+  <rect x="0" y="300" width="400" height="200" fill="#e2e8f0"/>
+  
+  <!-- Window -->
+  <rect x="300" y="50" width="80" height="120" rx="8" fill="#bfdbfe"/>
+  <rect x="305" y="55" width="70" height="110" rx="4" fill="#dbeafe"/>
+  <line x1="340" y1="55" x2="340" y2="165" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="305" y1="110" x2="375" y2="110" stroke="#94a3b8" stroke-width="2"/>
+  
+  <!-- Clouds in window -->
+  <ellipse cx="330" cy="80" rx="8" ry="5" fill="#f1f5f9"/>
+  <ellipse cx="350" cy="85" rx="6" ry="4" fill="#f1f5f9"/>
+  
+  <!-- Person 1 -->
+  <circle cx="120" cy="200" r="30" fill="#fbbf24"/>
+  <rect x="105" y="230" width="30" height="40" rx="15" fill="#3b82f6"/>
+  <rect x="110" y="270" width="20" height="30" fill="#1e293b"/>
+  
+  <!-- Person 1 laptop -->
+  <rect x="80" y="290" width="80" height="50" rx="8" fill="#374151"/>
+  <rect x="85" y="295" width="70" height="40" rx="4" fill="#1f2937"/>
+  <rect x="90" y="300" width="60" height="30" rx="2" fill="#3b82f6"/>
+  
+  <!-- Person 2 -->
+  <circle cx="280" cy="220" r="25" fill="#ef4444"/>
+  <rect x="270" y="245" width="20" height="35" rx="10" fill="#8b5cf6"/>
+  <rect x="275" y="280" width="10" height="25" fill="#1e293b"/>
+  
+  <!-- Person 2 tablet -->
+  <rect x="320" y="250" width="50" height="70" rx="8" fill="#1e293b"/>
+  <rect x="325" y="255" width="40" height="60" rx="4" fill="#10b981"/>
+  
+  <!-- Design elements around person 2 -->
+  <circle cx="250" cy="180" r="8" fill="#f59e0b" opacity="0.7"/>
+  <rect x="310" y="190" width="15" height="15" rx="2" fill="#8b5cf6" opacity="0.7"/>
+  <polygon points="200,160 210,180 190,180" fill="#ef4444" opacity="0.7"/>
+  
+  <!-- Whiteboard -->
+  <rect x="20" y="50" width="120" height="80" rx="8" fill="#f1f5f9"/>
+  <rect x="25" y="55" width="110" height="70" rx="4" fill="#ffffff"/>
+  
+  <!-- Whiteboard content -->
+  <circle cx="60" cy="85" r="15" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="80" y="75" width="30" height="20" rx="4" fill="none" stroke="#10b981" stroke-width="2"/>
+  <line x1="60" y1="100" x2="100" y2="100" stroke="#f59e0b" stroke-width="2"/>
+  <polygon points="110,80 120,90 110,100 100,90" fill="none" stroke="#ef4444" stroke-width="2"/>
+  
+  <!-- Coffee cups -->
+  <ellipse cx="50" cy="350" rx="12" ry="8" fill="#8b5cf6"/>
+  <ellipse cx="50" cy="347" rx="8" ry="5" fill="#a855f7"/>
+  
+  <ellipse cx="350" cy="370" rx="10" ry="6" fill="#10b981"/>
+  <ellipse cx="350" cy="368" rx="6" ry="4" fill="#34d399"/>
+  
+  <!-- Books stack -->
+  <rect x="180" y="360" width="40" height="8" fill="#ef4444"/>
+  <rect x="185" y="350" width="35" height="8" fill="#3b82f6"/>
+  <rect x="190" y="340" width="30" height="8" fill="#10b981"/>
+  
+  <!-- Plant -->
+  <ellipse cx="150" cy="380" rx="20" ry="6" fill="#64748b"/>
+  <path d="M 150 380 Q 140 360 135 340" stroke="#22c55e" stroke-width="2" fill="none"/>
+  <path d="M 150 380 Q 160 360 165 340" stroke="#22c55e" stroke-width="2" fill="none"/>
+  <ellipse cx="135" cy="340" rx="6" ry="10" fill="#16a34a"/>
+  <ellipse cx="165" cy="340" rx="6" ry="10" fill="#16a34a"/>
+  
+  <!-- Floating tech icons -->
+  <rect x="200" y="30" width="20" height="20" rx="4" fill="#3b82f6" opacity="0.3"/>
+  <text x="210" y="45" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle">&lt;/&gt;</text>
+  
+  <circle cx="250" cy="60" r="15" fill="#8b5cf6" opacity="0.3"/>
+  <rect x="245" y="55" width="10" height="10" rx="2" fill="#8b5cf6"/>
+  
+  <polygon points="300,30 315,45 300,60 285,45" fill="#10b981" opacity="0.3"/>
+  
+  <!-- Background decorative elements -->
+  <circle cx="370" cy="200" r="40" fill="#ddd6fe" opacity="0.2"/>
+  <circle cx="30" cy="250" r="50" fill="#bfdbfe" opacity="0.2"/>
+</svg> 
