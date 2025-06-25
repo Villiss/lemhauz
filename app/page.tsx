@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/ui/logo"
 import { ServiceCard } from "@/components/ServiceCard"
 import { ContactCard } from "@/components/ContactCard"
@@ -22,10 +23,10 @@ import {
   MapPin
 } from "lucide-react"
 import Image from "next/image"
-import { companyData } from "@/lib/data"
+import { companyData, MAINTENANCE_MODE } from "@/lib/data"
 import { scrollToSection, createScrollHandler, createEmailHandler } from "@/lib/navigation"
 import { getServiceData, getServiceIcon } from "@/lib/serviceHelpers"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 
 export default function HomePage() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -34,6 +35,9 @@ export default function HomePage() {
   const [isNavbarHovered, setIsNavbarHovered] = useState(false);
   // Mobile sheet state
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  // Maintenance scroll button visibility
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [hideScrollButton, setHideScrollButton] = useState(false);
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -41,12 +45,33 @@ export default function HomePage() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(Math.min(progress, 100));
+
+      // V maintenance móde sleduj pozíciu contact formu
+      if (MAINTENANCE_MODE) {
+        const contactForm = document.querySelector('#contact-form');
+        if (contactForm) {
+          const contactFormRect = contactForm.getBoundingClientRect();
+          const isNearContactForm = contactFormRect.top < window.innerHeight * 0.8; // Keď je contact form blízko (80% výšky okna)
+          setHideScrollButton(isNearContactForm);
+        }
+      }
     };
 
     window.addEventListener('scroll', updateScrollProgress);
     updateScrollProgress(); // Initial call
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
+  }, []);
+
+  // Show scroll button after 3 seconds in maintenance mode
+  useEffect(() => {
+    if (MAINTENANCE_MODE) {
+      const timer = setTimeout(() => {
+        setShowScrollButton(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleNavbarMouseMove = (e: React.MouseEvent) => {
@@ -67,6 +92,185 @@ export default function HomePage() {
     };
   };
 
+  // Ak je maintenance mode aktívny, zobraz maintenance stránku s tmavým pozadím
+  if (MAINTENANCE_MODE) {
+    return (
+      <>
+        {/* Maintenance Hero s tmavým pozadím */}
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+          {/* Grid pattern pozadie */}
+          <div className="absolute inset-0 opacity-40" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E\")"}}></div>
+          
+          <div className="container mx-auto px-4 py-16 relative z-10 flex items-center justify-center min-h-screen">
+            <div className="text-center space-y-12 max-w-4xl mx-auto">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div 
+                    className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight cursor-pointer inline-block"
+                    style={{
+                      background: 'linear-gradient(45deg, #ffffff, #ffffff)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      transition: 'background 0.3s ease-out'
+                    }}
+                    onMouseMove={(e) => {
+                      const text = e.currentTarget;
+                      const rect = text.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      
+                      const lightX = (x / rect.width) * 100;
+                      const lightY = (y / rect.height) * 100;
+                      
+                      text.style.background = `radial-gradient(300px circle at ${lightX}% ${lightY}%, #3b82f6, #9333ea, #ffffff)`;
+                      text.style.webkitBackgroundClip = 'text';
+                      text.style.backgroundClip = 'text';
+                    }}
+                    onMouseLeave={(e) => {
+                      const text = e.currentTarget;
+                      text.style.background = 'linear-gradient(45deg, #ffffff, #ffffff)';
+                      text.style.webkitBackgroundClip = 'text';
+                      text.style.backgroundClip = 'text';
+                    }}
+                  >
+                    LEMHAUZ
+                  </div>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    Momentálne na stránke <span className="text-blue-400">pracujeme</span>
+                  </h1>
+                  <p className="text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                    Naša stránka sa práve vylepšuje! Čoskoro budeme späť s novým obsahom a funkciami. 
+                    Ak máte nejaké otázky alebo potrebujete okamžitú pomoc, neváhajte nás kontaktovať.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-2xl mx-auto">
+                  <div 
+                    className="space-y-3 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 cursor-default group relative overflow-hidden"
+                    onMouseMove={(e) => {
+                      const card = e.currentTarget;
+                      const rect = card.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      
+                      const lightX = (x / rect.width) * 100;
+                      const lightY = (y / rect.height) * 100;
+                      
+                      card.style.background = `radial-gradient(400px circle at ${lightX}% ${lightY}%, rgba(59, 130, 246, 0.15), rgba(255, 255, 255, 0.05))`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '';
+                    }}
+                  >
+                    <div className="text-3xl font-bold text-blue-400">💻</div>
+                    <h3 className="font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">Vylepšujeme</h3>
+                    <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300">Nové funkcie a obsah</p>
+                  </div>
+                  <div 
+                    className="space-y-3 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 cursor-default group relative overflow-hidden"
+                    onMouseMove={(e) => {
+                      const card = e.currentTarget;
+                      const rect = card.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      
+                      const lightX = (x / rect.width) * 100;
+                      const lightY = (y / rect.height) * 100;
+                      
+                      card.style.background = `radial-gradient(400px circle at ${lightX}% ${lightY}%, rgba(147, 51, 234, 0.15), rgba(255, 255, 255, 0.05))`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '';
+                    }}
+                  >
+                    <div className="text-3xl font-bold text-purple-400">⚡</div>
+                    <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors duration-300">Optimalizujeme</h3>
+                    <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300">Rýchlosť a výkon</p>
+                  </div>
+                  <div 
+                    className="space-y-3 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 cursor-default group relative overflow-hidden"
+                    onMouseMove={(e) => {
+                      const card = e.currentTarget;
+                      const rect = card.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      
+                      const lightX = (x / rect.width) * 100;
+                      const lightY = (y / rect.height) * 100;
+                      
+                      card.style.background = `radial-gradient(400px circle at ${lightX}% ${lightY}%, rgba(34, 197, 94, 0.15), rgba(255, 255, 255, 0.05))`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '';
+                    }}
+                  >
+                    <div className="text-3xl font-bold text-green-400">🎨</div>
+                    <h3 className="font-semibold text-white group-hover:text-green-300 transition-colors duration-300">Modernizujeme</h3>
+                    <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300">Dizajn a UX</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Down Button */}
+          {showScrollButton && (
+            <div 
+              className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500"
+              style={{
+                opacity: hideScrollButton ? 0 : 1,
+                transform: `translate(-50%, ${hideScrollButton ? '20px' : '0'}) scale(${hideScrollButton ? 0.9 : 1})`,
+                pointerEvents: hideScrollButton ? 'none' : 'auto'
+              }}
+            >
+              <button
+                onClick={() => {
+                  const contactForm = document.querySelector('#contact-form');
+                  if (contactForm) {
+                    contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="group relative p-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-500 transform hover:scale-110 animate-bounce hover:animate-none overflow-hidden"
+                style={{
+                  animation: showScrollButton ? 'fadeInUp 1s ease-out forwards' : undefined,
+                }}
+                onMouseMove={(e) => {
+                  const button = e.currentTarget;
+                  const rect = button.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  
+                  const lightX = (x / rect.width) * 100;
+                  const lightY = (y / rect.height) * 100;
+                  
+                  button.style.background = `radial-gradient(200px circle at ${lightX}% ${lightY}%, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.2), rgba(255, 255, 255, 0.1))`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '';
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-full"></div>
+                <ArrowRight className="h-6 w-6 text-white transform rotate-90 group-hover:text-blue-300 transition-all duration-300 relative z-10" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+              </button>
+            </div>
+          )}
+
+        {/* Contact Form - zachovaný s pridaným id */}
+        <div id="contact-form">
+          <ContactFormDark />
+        </div>
+        
+        {/* Spacing pod contact formom */}
+        <div className="py-16"></div>
+        </div>
+        
+      </>
+    );
+  }
+
+  // Normálny obsah stránky
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20">
       {/* Navigation */}
@@ -312,14 +516,37 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 order-first lg:order-first">
               <div className="space-y-4">
-                <div className="flex items-center justify-center lg:justify-start space-x-4">
-                  <Logo 
-                    size="lg"
-                    variant="minimal"
-                    showText={false}
-                    className="hover:scale-110 hover:rotate-2 transition-all duration-300"
-                  />
-                  <div className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 tracking-tight">
+                <div className="text-center lg:text-left">
+                  <div 
+                    className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight cursor-pointer px-4 py-2 rounded-lg inline-block"
+                    style={{
+                      background: 'linear-gradient(45deg, #1e293b, #1e293b)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      transition: 'background 0.3s ease-out'
+                    }}
+                    onMouseMove={(e) => {
+                      const text = e.currentTarget;
+                      const rect = text.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      
+                      const lightX = (x / rect.width) * 100;
+                      const lightY = (y / rect.height) * 100;
+                      
+                      text.style.background = `radial-gradient(300px circle at ${lightX}% ${lightY}%, #3b82f6, #9333ea, #1e293b)`;
+                      text.style.webkitBackgroundClip = 'text';
+                      text.style.backgroundClip = 'text';
+                    }}
+                    onMouseLeave={(e) => {
+                      const text = e.currentTarget;
+                      text.style.background = 'linear-gradient(45deg, #1e293b, #1e293b)';
+                      text.style.webkitBackgroundClip = 'text';
+                      text.style.backgroundClip = 'text';
+                    }}
+                    onClick={() => scrollToSection('hero')}
+                  >
                     LEMHAUZ
                   </div>
                 </div>
@@ -361,12 +588,14 @@ export default function HomePage() {
             </div>
             <div className="relative order-last lg:order-last">
               <div className="relative z-10">
-                <Image
-                  src="/hero-workspace.svg"
-                  alt="Moderný vývojársky workspace s laptopom, kódom a kávou"
-                  width={500}
-                  height={600}
-                  className="rounded-2xl shadow-2xl w-full h-auto"
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  alt="Moderný IT tím spolupracujúci na vývoji softvéru v profesionálnom workspace"
+                  className="rounded-2xl shadow-2xl w-full h-auto object-cover aspect-[4/3]"
+                  onError={(e) => {
+                    e.currentTarget.src = "/hero-workspace.svg";
+                    e.currentTarget.alt = "Moderný vývojársky workspace s laptopom, kódom a kávou";
+                  }}
                 />
               </div>
               <div className="absolute -top-4 -right-4 w-48 h-48 lg:w-72 lg:h-72 bg-blue-100 rounded-full blur-3xl opacity-70"></div>
@@ -486,12 +715,14 @@ export default function HomePage() {
               </div>
             </div>
             <div className="relative order-first lg:order-last">
-              <Image
-                src="/about-team.svg"
-                alt="Tím vývojárov a dizajnérov pracujúcich v modernom prostredí"
-                width={400}
-                height={500}
-                className="rounded-2xl shadow-xl w-full h-auto"
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Profesionálny tím IT vývojárov a dizajnérov spolupracujúcich v modernom office prostredí"
+                className="rounded-2xl shadow-xl w-full h-auto object-cover aspect-[4/3]"
+                onError={(e) => {
+                  e.currentTarget.src = "/about-team.svg";
+                  e.currentTarget.alt = "Tím vývojárov a dizajnérov pracujúcich v modernom prostredí";
+                }}
               />
             </div>
           </div>

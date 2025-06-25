@@ -1,5 +1,8 @@
 import type { CompanyData } from "./types"
 
+// Maintenance mode configuration
+export const MAINTENANCE_MODE = true; // Zmeniť na true pre aktivovanie maintenance módu
+
 export const companyData: CompanyData = {
   name: "Lemhauz",
   fullName: "Lemhauz s.r.o.",

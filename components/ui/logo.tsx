@@ -44,30 +44,43 @@ export const Logo: React.FC<LogoProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!onClick) return;
-    const logo = e.currentTarget;
-    const rect = logo.getBoundingClientRect();
+    const logoContainer = e.currentTarget;
+    const logoImg = logoContainer.querySelector('img');
+    const rect = logoContainer.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
     const lightX = (x / rect.width) * 100;
     const lightY = (y / rect.height) * 100;
     
-    logo.style.background = `radial-gradient(200px circle at ${lightX}% ${lightY}%, rgba(59, 130, 246, 0.1), transparent 60%)`;
+    // Podsvietenie pozadia
+    logoContainer.style.background = `radial-gradient(200px circle at ${lightX}% ${lightY}%, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.15), transparent 60%)`;
+    
+    // Farebný efekt na samotný obrázok
+    if (logoImg) {
+      const strength = Math.min(1, Math.max(0, 1 - Math.sqrt(Math.pow(lightX - 50, 2) + Math.pow(lightY - 50, 2)) / 50));
+      const hue = lightX < 50 ? 200 : 260; // modrá vs fialová
+      logoImg.style.filter = `hue-rotate(${hue}deg) saturate(${1 + strength * 2}) brightness(${1 + strength * 0.3})`;
+    }
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!onClick) return;
-    const logo = e.currentTarget;
-    logo.style.background = '';
+    const logoContainer = e.currentTarget;
+    const logoImg = logoContainer.querySelector('img');
+    logoContainer.style.background = '';
+    if (logoImg) {
+      logoImg.style.filter = '';
+    }
   };
 
   return (
     <div 
       className={cn(
-        "inline-flex items-center transition-all duration-200 cursor-pointer relative overflow-hidden",
-        "hover:scale-105 hover:shadow-lg",
+        "inline-flex items-center transition-all duration-500 cursor-pointer relative overflow-hidden",
+        "hover:scale-110 hover:rotate-3 hover:shadow-xl",
         showText ? "flex-col space-y-2" : "justify-center",
-        onClick && "hover:opacity-90"
+        onClick && "hover:opacity-95"
       )}
       onClick={onClick}
       onMouseMove={handleMouseMove}
@@ -84,7 +97,7 @@ export const Logo: React.FC<LogoProps> = ({
           width={200}
           height={200}
           className={cn(
-            "object-contain",
+            "object-contain transition-all duration-500",
             sizeClasses[size]
           )}
         />
