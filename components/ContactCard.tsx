@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import type { ContactCardProps } from "@/lib/types"
+import { track } from "@vercel/analytics"
 
 export function ContactCard({
   title,
@@ -30,6 +31,14 @@ export function ContactCard({
     card.style.background = '';
   };
 
+  const handleCardClick = () => {
+    track('Contact_Card_Clicked', { 
+      type: title.toLowerCase(),
+      content: content,
+      has_href: !!href
+    });
+  };
+
   const cardContent = (
     <Card 
       className={cn(
@@ -39,6 +48,7 @@ export function ContactCard({
       )}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleCardClick}
     >
       <CardContent className="p-6 text-center space-y-4">
         <div className={cn(
@@ -64,7 +74,14 @@ export function ContactCard({
 
   if (href) {
     return (
-      <a href={href} className="block transform transition-transform duration-300 hover:scale-105">
+      <a 
+        href={href} 
+        className="block transform transition-transform duration-300 hover:scale-105"
+        onClick={() => track('Contact_Link_Clicked', { 
+          type: title.toLowerCase(),
+          href: href
+        })}
+      >
         {cardContent}
       </a>
     )
