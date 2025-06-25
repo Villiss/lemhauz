@@ -102,6 +102,7 @@ export interface ServiceCardProps {
   features: string[]
   featureIcons: LucideIcon[]
   onButtonClick: () => void
+  serviceId?: string
 }
 
 export interface ContactCardProps {

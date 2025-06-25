@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { track } from '@vercel/analytics';
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Meno je povinné').min(2, 'Meno musí mať aspoň 2 znaky'),
@@ -35,6 +36,7 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    track('Contact_Form_Started');
     setStatus('loading');
     setErrorMessage('');
 
@@ -50,17 +52,33 @@ export function ContactForm() {
       const result = await response.json();
 
       if (response.ok) {
+        track('Contact_Form_Success', {
+          subject_category: data.subject.toLowerCase().includes('web') ? 'web-development' :
+                           data.subject.toLowerCase().includes('design') ? 'graphic-design' :
+                           data.subject.toLowerCase().includes('motokár') ? 'motokart' : 'other'
+        });
         setStatus('success');
         reset();
         setTimeout(() => setStatus('idle'), 3000);
       } else {
+        track('Contact_Form_Error', { 
+          error_type: 'server_error',
+          error_message: result.error 
+        });
         setStatus('error');
         setErrorMessage(result.error || 'Nastala neočakávaná chyba');
       }
     } catch (error) {
+      track('Contact_Form_Error', { 
+        error_type: 'network_error' 
+      });
       setStatus('error');
       setErrorMessage('Nastala chyba pri odosielaní. Skúste to znova.');
     }
+  };
+
+  const handleFieldFocus = (fieldName: string) => {
+    track('Contact_Form_Field_Focused', { field: fieldName });
   };
 
   if (status === 'success') {
@@ -99,6 +117,7 @@ export function ContactForm() {
             id="name"
             type="text"
             {...register('name')}
+            onFocus={() => handleFieldFocus('name')}
             placeholder="Vaše meno"
             className={`${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
           />
@@ -116,6 +135,7 @@ export function ContactForm() {
             id="email"
             type="email"
             {...register('email')}
+            onFocus={() => handleFieldFocus('email')}
             placeholder="vas@email.sk"
             className={`${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
           />
@@ -133,6 +153,7 @@ export function ContactForm() {
             id="subject"
             type="text"
             {...register('subject')}
+            onFocus={() => handleFieldFocus('subject')}
             placeholder="Predmet správy"
             className={`${errors.subject ? 'border-red-500 focus:ring-red-500' : ''}`}
           />
@@ -150,6 +171,7 @@ export function ContactForm() {
             id="message"
             rows={5}
             {...register('message')}
+            onFocus={() => handleFieldFocus('message')}
             placeholder="Vaša správa..."
             className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none ${
               errors.message ? 'border-red-500 focus:ring-red-500' : ''

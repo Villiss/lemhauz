@@ -27,6 +27,7 @@ import { companyData, MAINTENANCE_MODE } from "@/lib/data"
 import { scrollToSection, createScrollHandler, createEmailHandler } from "@/lib/navigation"
 import { getServiceData, getServiceIcon } from "@/lib/serviceHelpers"
 import React, { useEffect, useState } from "react"
+import { track } from "@vercel/analytics"
 
 export default function HomePage() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -38,20 +39,42 @@ export default function HomePage() {
   // Maintenance scroll button visibility
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [hideScrollButton, setHideScrollButton] = useState(false);
+  // Tracking states
+  const [hasTrackedDeepScroll, setHasTrackedDeepScroll] = useState(false);
+  const [lastTrackedSection, setLastTrackedSection] = useState<string>('');
 
   useEffect(() => {
+    // Track page load
+    track('Page_Loaded', { page: 'homepage' });
+    
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(Math.min(progress, 100));
 
+      // Track scroll milestones
+      if (progress > 50 && !hasTrackedDeepScroll) {
+        track('Scroll_Milestone', { percentage: 50 });
+        setHasTrackedDeepScroll(true);
+      }
+
+      // Track section viewing based on scroll position
+      const sections = ['hero', 'sluzby', 'o-nas', 'referencie', 'kontakt'];
+      const currentSection = Math.floor((progress / 100) * sections.length);
+      const sectionName = sections[currentSection];
+      
+      if (sectionName && sectionName !== lastTrackedSection) {
+        track('Section_Viewed', { section: sectionName });
+        setLastTrackedSection(sectionName);
+      }
+
       // V maintenance móde sleduj pozíciu contact formu
       if (MAINTENANCE_MODE) {
         const contactForm = document.querySelector('#contact-form');
         if (contactForm) {
           const contactFormRect = contactForm.getBoundingClientRect();
-          const isNearContactForm = contactFormRect.top < window.innerHeight * 0.8; // Keď je contact form blízko (80% výšky okna)
+          const isNearContactForm = contactFormRect.top < window.innerHeight * 0.8;
           setHideScrollButton(isNearContactForm);
         }
       }
@@ -61,7 +84,7 @@ export default function HomePage() {
     updateScrollProgress(); // Initial call
 
     return () => window.removeEventListener('scroll', updateScrollProgress);
-  }, []);
+  }, [hasTrackedDeepScroll, lastTrackedSection]);
 
   // Show scroll button after 3 seconds in maintenance mode
   useEffect(() => {
@@ -85,11 +108,17 @@ export default function HomePage() {
   // Handler for mobile navigation that scrolls first then closes sheet
   const createMobileScrollHandler = (sectionId: string) => {
     return () => {
+      track('Mobile_Navigation_Clicked', { destination: sectionId });
       scrollToSection(sectionId); // Scroll first
       setTimeout(() => {
         setIsSheetOpen(false); // Then close the sheet after a short delay
       }, 200); // Small delay to let user see the scroll
     };
+  };
+
+  const handleMobileMenuOpen = () => {
+    track('Mobile_Menu_Opened');
+    setIsSheetOpen(true);
   };
 
   // Ak je maintenance mode aktívny, zobraz maintenance stránku s tmavým pozadím
