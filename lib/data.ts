@@ -201,6 +201,30 @@ export const companyData: CompanyData = {
       color: "orange"
     }
   ],
+
+  projects: [
+    {
+      id: "plastRenew",
+      name: "Plast Renew",
+      description: "Technológia chemického recyklovania",
+      image: "plastrenew.png",
+      url: "https://www.plastrenew.com/sk"
+    },
+    {
+      id: "sotoPrive",
+      name: "Soto Privé",
+      description: "Luxury Apartments in Spain",
+      image: "sotoprive.png",
+      url: "https://www.sotoprive.com/"
+    },
+    {
+      id: "nordites",
+      name: "Nördites",
+      description: "Company Overview",
+      image: "nordites.png",
+      url: "https://www.nordites.com/"
+    }
+  ],
   
   seo: {
     title: "Lemhauz - IT Riešenia, Vývoj Aplikácií & Motokárová Akadémia",

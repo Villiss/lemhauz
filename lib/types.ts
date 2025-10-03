@@ -61,6 +61,14 @@ export interface WhyChooseUsItem {
   color: string
 }
 
+export interface Project {
+  id: string
+  name: string
+  description: string
+  image: string
+  url: string
+}
+
 export interface SEOData {
   title: string
   description: string
@@ -88,6 +96,7 @@ export interface CompanyData {
   contactCards: ContactCard[]
   socialLinks: SocialLink[]
   whyChooseUs: WhyChooseUsItem[]
+  projects: Project[]
   seo: SEOData
 }
 
@@ -172,6 +181,13 @@ export interface ServiceData {
   features: string[]
   featureIcons: LucideIcon[]
   color: string
+}
+
+export interface ProjectCardProps {
+  name: string
+  description: string
+  image: string
+  url: string
 }
 
 // Color Classes Type

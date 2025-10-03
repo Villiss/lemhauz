@@ -13,6 +13,7 @@ import { SocialLinks } from "@/components/SocialLinks"
 import { ReferenceCard } from "@/components/ReferenceCard"
 import { FeatureGrid } from "@/components/FeatureGrid"
 import { ContactFormDark } from "@/components/ContactFormDark"
+import { ProjectCard } from "@/components/ProjectCard"
 import {
   ArrowRight,
   Code,
@@ -665,6 +666,27 @@ export default function HomePage() {
                 />
               )
             })}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="mt-20">
+            <div className="text-center space-y-4 mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Naše projekty</h3>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                Pozrite si ukážky našich realizovaných projektov
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {companyData.projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  name={project.name}
+                  description={project.description}
+                  image={project.image}
+                  url={project.url}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
