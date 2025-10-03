@@ -223,6 +223,13 @@ export const companyData: CompanyData = {
       description: "Company Overview",
       image: "nordites.png",
       url: "https://www.nordites.com/"
+    },
+    {
+      id: "akademia",
+      name: "Akadémia max60",
+      description: "Motokárová akadémia",
+      image: "akademia.png",
+      url: "https://app-akademia-max-60.vercel.app/login"
     }
   ],
   
