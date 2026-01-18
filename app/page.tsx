@@ -1,9 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/ui/logo"
 import { ServiceCard } from "@/components/ServiceCard"
 import { ContactCard } from "@/components/ContactCard"
@@ -174,7 +172,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-2xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-4xl mx-auto">
                   <div 
                     className="space-y-3 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 cursor-default group relative overflow-hidden"
                     onMouseMove={(e) => {
@@ -547,7 +545,7 @@ export default function HomePage() {
               <div className="space-y-4">
                 <div className="text-center lg:text-left">
                   <div 
-                    className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight cursor-pointer px-4 py-2 rounded-lg inline-block"
+                    className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight cursor-pointer py-2 rounded-lg inline-block"
                     style={{
                       background: 'linear-gradient(45deg, #1e293b, #1e293b)',
                       WebkitBackgroundClip: 'text',
@@ -579,9 +577,6 @@ export default function HomePage() {
                     LEMHAUZ
                   </div>
                 </div>
-                <Badge variant="outline" className="bg-white/70 backdrop-blur-sm text-slate-700 border-white/40 shadow-lg">
-                  IT Riešenia & Dizajn
-                </Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 leading-tight">
                   {companyData.shortDescription.split('úspech')[0]}<span className="text-blue-600">úspech</span>
                 </h1>
@@ -638,31 +633,29 @@ export default function HomePage() {
       <section id="sluzby" className="py-20 bg-gradient-to-br from-slate-50/50 via-white/30 to-blue-50/40">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="bg-white/70 backdrop-blur-sm text-slate-700 border-white/40 shadow-lg">
-              Naše služby
-            </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Komplexné IT riešenia</h2>
             <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
               Dostanete kompletné IT riešenia od vývoja aplikácií až po podnikovú architektúru a motokárovú akadémiu
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+          <div className="flex flex-wrap justify-center gap-8 items-stretch">
             {companyData.services.map((service) => {
               const serviceData = getServiceData(service)
               return (
-                <ServiceCard
-                  key={service.id}
-                  title={serviceData.title}
-                  description={serviceData.description}
-                  icon={serviceData.icon}
-                  iconColor={serviceData.iconColor}
-                  backgroundColor={serviceData.backgroundColor}
-                  hoverBackgroundColor={serviceData.hoverBackgroundColor}
-                  features={serviceData.features}
-                  featureIcons={serviceData.featureIcons}
-                  onButtonClick={() => scrollToSection('kontakt')}
-                />
+                <div key={service.id} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]">
+                  <ServiceCard
+                    title={serviceData.title}
+                    description={serviceData.description}
+                    icon={serviceData.icon}
+                    iconColor={serviceData.iconColor}
+                    backgroundColor={serviceData.backgroundColor}
+                    hoverBackgroundColor={serviceData.hoverBackgroundColor}
+                    features={serviceData.features}
+                    featureIcons={serviceData.featureIcons}
+                    onButtonClick={() => scrollToSection('kontakt')}
+                  />
+                </div>
               )
             })}
           </div>
@@ -674,9 +667,6 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 order-last lg:order-first">
-              <Badge variant="outline" className="bg-white/70 backdrop-blur-sm text-slate-700 border-white/40 shadow-lg">
-                O nás
-              </Badge>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">Vaši partneri pre technológie a dizajn</h2>
               <div className="space-y-4 text-slate-600">
                 <p>
@@ -687,60 +677,6 @@ export default function HomePage() {
                   Okrem IT služieb vám ponúkame aj motokárovú akadémiu s profesionálnym tréningom jazdy. 
                   Naša vízia je jasná - vytvárame riešenia a poskytujeme služby, ktoré vám pomôžu rásť a dosiahnuť úspech.
                 </p>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-slate-900">Technológie</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {companyData.technologies.map((tech) => (
-                      <Badge 
-                        key={tech} 
-                        variant="secondary" 
-                        className="bg-white/70 backdrop-blur-sm border border-white/30 hover:scale-105 transition-all duration-300 cursor-default shadow-md relative overflow-hidden group"
-                        onMouseMove={(e) => {
-                          const badge = e.currentTarget;
-                          const rect = badge.getBoundingClientRect();
-                          const x = e.clientX - rect.left;
-                          const y = e.clientY - rect.top;
-                          const lightX = (x / rect.width) * 100;
-                          const lightY = (y / rect.height) * 100;
-                          badge.style.background = `radial-gradient(200px circle at ${lightX}% ${lightY}%, rgba(59, 130, 246, 0.15), transparent 60%)`;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = '';
-                        }}
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-slate-900">Dizajn</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {companyData.designTools.map((tool) => (
-                      <Badge 
-                        key={tool} 
-                        variant="secondary" 
-                        className="bg-white/70 backdrop-blur-sm border border-white/30 hover:scale-105 transition-all duration-300 cursor-default shadow-md relative overflow-hidden group"
-                        onMouseMove={(e) => {
-                          const badge = e.currentTarget;
-                          const rect = badge.getBoundingClientRect();
-                          const x = e.clientX - rect.left;
-                          const y = e.clientY - rect.top;
-                          const lightX = (x / rect.width) * 100;
-                          const lightY = (y / rect.height) * 100;
-                          badge.style.background = `radial-gradient(200px circle at ${lightX}% ${lightY}%, rgba(147, 51, 234, 0.15), transparent 60%)`;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = '';
-                        }}
-                      >
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
             <div className="relative order-first lg:order-last">
@@ -762,12 +698,9 @@ export default function HomePage() {
       <section id="referencie" className="py-20 bg-gradient-to-br from-slate-50/40 via-blue-50/30 to-purple-50/20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="bg-white/70 backdrop-blur-sm text-slate-700 border-white/40 shadow-lg">
-              Referencie
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Úspešné projekty</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Projekty</h2>
             <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
-              Objavte naše úspešné projekty a prečítajte si, čo o nás hovoria spokojní klienti
+              Objavte naše projekty
             </p>
           </div>
 
@@ -806,9 +739,6 @@ export default function HomePage() {
       <section id="kontakt" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="bg-slate-800 text-slate-300 border-slate-700">
-              Kontakt
-            </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white">Začnime spoluprácu</h2>
             <p className="text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto">
               Máte projekt alebo nápad? Povedzme si o vašich potrebách a nájdeme najlepšie riešenie

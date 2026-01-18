@@ -8,9 +8,9 @@ export interface ContactInfo {
 }
 
 export interface SocialMedia {
-  facebook: string
+  // facebook: string
   instagram: string
-  github: string
+  // github: string
 }
 
 export interface Stats {
