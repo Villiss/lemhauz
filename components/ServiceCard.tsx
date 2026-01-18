@@ -98,11 +98,11 @@ export function ServiceCard({
         </div>
         <Button 
           variant="outline" 
-          className="w-full bg-white/70 backdrop-blur-sm text-slate-700 border-white/40 hover:text-white hover:border-transparent text-sm sm:text-base transform hover:scale-105 transition-all duration-500 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden group"
+          className="w-full bg-white/70 backdrop-blur-sm text-white md:text-slate-700 border-transparent md:border-white/40 hover:text-white hover:border-transparent text-sm sm:text-base transform hover:scale-105 transition-all duration-500 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden group"
           onClick={handleCTAClick}
         >
           <span className="relative z-10 transition-all duration-300">Začať projekt</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/90 to-purple-600/90 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+          <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500/90 to-purple-600/90 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-100 md:scale-x-0 group-hover:scale-x-100 origin-left"></div>
           <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
         </Button>
       </CardContent>

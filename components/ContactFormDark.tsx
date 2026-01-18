@@ -161,7 +161,7 @@ export function ContactFormDark() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <div
         className="transform transition-all duration-700 ease-out"
         style={{

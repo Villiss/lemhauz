@@ -2,9 +2,9 @@ import { Facebook, Instagram, Github } from "lucide-react"
 import type { SocialLinksProps } from "@/lib/types"
 
 const iconMap = {
-  Facebook,
+  // Facebook,
   Instagram, 
-  Github
+  // Github
 }
 
 export function SocialLinks({ 

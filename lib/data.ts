@@ -18,9 +18,9 @@ export const companyData: CompanyData = {
   },
   
   social: {
-    facebook: "https://facebook.com/lemhauz",
-    instagram: "https://instagram.com/lemhauz",
-    github: "https://github.com/lemhauz"
+    // facebook: "https://facebook.com/lemhauz",
+    instagram: "https://instagram.com/lemhauz"
+    // github: "https://github.com/lemhauz"
   },
   
   website: "https://lemhauz.sk",
@@ -70,18 +70,18 @@ export const companyData: CompanyData = {
         "Marketingové materiály"
       ]
     },
-    {
-      id: "architecture",
-      title: "Podniková architektúra",
-      description: "Optimalizujeme vaše IT procesy a navrhneme architektúru, ktorá zlepší efektivitu vašej firmy",
-      icon: "Building2",
-      color: "green",
-      features: [
-        "Systémová architektúra",
-        "Procesné optimalizácie", 
-        "IT stratégie"
-      ]
-    },
+    // {
+    //   id: "architecture",
+    //   title: "Podniková architektúra",
+    //   description: "Optimalizujeme vaše IT procesy a navrhneme architektúru, ktorá zlepší efektivitu vašej firmy",
+    //   icon: "Building2",
+    //   color: "green",
+    //   features: [
+    //     "Systémová architektúra",
+    //     "Procesné optimalizácie", 
+    //     "IT stratégie"
+    //   ]
+    // },
     {
       id: "motokart",
       title: "Motokárová akadémia", 
@@ -131,9 +131,9 @@ export const companyData: CompanyData = {
   ],
   
   socialLinks: [
-    { name: "Facebook", url: "https://facebook.com/lemhauz", icon: "Facebook" },
-    { name: "Instagram", url: "https://instagram.com/lemhauz", icon: "Instagram" },
-    { name: "GitHub", url: "https://github.com/lemhauz", icon: "Github" }
+    // { name: "Facebook", url: "https://facebook.com/lemhauz", icon: "Facebook" },
+    { name: "Instagram", url: "https://instagram.com/lemhauz", icon: "Instagram" }
+    // { name: "GitHub", url: "https://github.com/lemhauz", icon: "Github" }
   ],
 
   references: [
