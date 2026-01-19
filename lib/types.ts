@@ -87,7 +87,6 @@ export interface CompanyData {
   website: string
   contact: ContactInfo
   social: SocialMedia
-  stats: Stats
   technologies: string[]
   designTools: string[]
   services: Service[]

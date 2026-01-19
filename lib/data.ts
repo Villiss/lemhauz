@@ -25,11 +25,6 @@ export const companyData: CompanyData = {
   
   website: "https://lemhauz.sk",
   
-  stats: {
-    projects: "50+",
-    experience: "3+",
-  },
-  
   technologies: [
     "React",
     "Next.js", 
@@ -99,7 +94,6 @@ export const companyData: CompanyData = {
   navigation: [
     { id: "sluzby", label: "Služby", icon: "Code" },
     { id: "o-nas", label: "O nás", icon: "Users" },
-    { id: "referencie", label: "Referencie", icon: "Star" },
     { id: "kontakt", label: "Kontakt", icon: "Mail" }
   ],
   

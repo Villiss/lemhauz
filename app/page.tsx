@@ -5,7 +5,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Logo } from "@/components/ui/logo"
 import { ServiceCard } from "@/components/ServiceCard"
 import { ContactCard } from "@/components/ContactCard"
-import { StatItem } from "@/components/StatItem"
 import { NavigationButton } from "@/components/NavigationButton"
 import { SocialLinks } from "@/components/SocialLinks"
 import { ReferenceCard } from "@/components/ReferenceCard"
@@ -59,7 +58,7 @@ export default function HomePage() {
       }
 
       // Track section viewing based on scroll position
-      const sections = ['hero', 'sluzby', 'o-nas', 'referencie', 'kontakt'];
+      const sections = ['hero', 'sluzby', 'o-nas', 'kontakt'];
       const currentSection = Math.floor((progress / 100) * sections.length);
       const sectionName = sections[currentSection];
       
@@ -606,10 +605,6 @@ export default function HomePage() {
                   <span className="relative z-10">Kontaktujte nás</span>
                 </Button>
               </div>
-                            <div className="flex items-center space-x-4 sm:space-x-8 pt-4">
-                <StatItem value={companyData.stats.projects} label="Projektov" />
-                <StatItem value={companyData.stats.experience} label="Roky skúseností" />
-              </div>
             </div>
             <div className="relative order-last lg:order-last">
               <div className="relative z-10">
@@ -640,11 +635,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {companyData.services.map((service) => {
               const serviceData = getServiceData(service)
               return (
-                <div key={service.id} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]">
+                <div key={service.id}>
                   <ServiceCard
                     title={serviceData.title}
                     description={serviceData.description}
@@ -716,8 +711,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* References Section */}
-      <section id="referencie" className="py-20 bg-gradient-to-br from-slate-50/40 via-blue-50/30 to-purple-50/20">
+      {/* <section id="referencie" className="py-20 bg-gradient-to-br from-slate-50/40 via-blue-50/30 to-purple-50/20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Projekty</h2>
@@ -726,7 +720,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* References Grid */}
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {companyData.references.map((reference) => (
@@ -739,7 +732,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Why Choose Us Grid */}
           <div className="space-y-8">
             <div className="text-center">
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Prečo si vybrať nás?</h3>
@@ -755,7 +747,7 @@ export default function HomePage() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="kontakt" className="py-20 bg-slate-900">
@@ -767,7 +759,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {companyData.contactCards.map((card, index) => (
               <ContactCard
                 key={card.title}
