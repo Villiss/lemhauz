@@ -25,6 +25,7 @@ export interface Service {
   icon: string
   color: string
   features: string[]
+  buttonText?: string
 }
 
 export interface NavigationItem {
@@ -110,6 +111,7 @@ export interface ServiceCardProps {
   features: string[]
   featureIcons: LucideIcon[]
   onButtonClick: () => void
+  buttonText?: string
   serviceId?: string
 }
 
@@ -180,6 +182,7 @@ export interface ServiceData {
   features: string[]
   featureIcons: LucideIcon[]
   color: string
+  buttonText?: string
 }
 
 export interface ProjectCardProps {

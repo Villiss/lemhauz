@@ -650,6 +650,7 @@ export default function HomePage() {
                     features={serviceData.features}
                     featureIcons={serviceData.featureIcons}
                     onButtonClick={() => scrollToSection('kontakt')}
+                    buttonText={serviceData.buttonText}
                   />
                 </div>
               )

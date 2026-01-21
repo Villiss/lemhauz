@@ -51,7 +51,8 @@ export const companyData: CompanyData = {
         "iOS & Android aplikácie",
         "Responzívne webové stránky", 
         "E-commerce riešenia"
-      ]
+      ],
+      buttonText: "Začať projekt"
     },
     {
       id: "design",
@@ -63,7 +64,8 @@ export const companyData: CompanyData = {
         "Firemná identita",
         "Logo dizajn",
         "Marketingové materiály"
-      ]
+      ],
+      buttonText: "Začať projekt"
     },
     // {
     //   id: "architecture",
@@ -87,7 +89,8 @@ export const companyData: CompanyData = {
         "Individuálne tréningy",
         "Skupinové kurzy",
         "Pokročilé techniky"
-      ]
+      ],
+      buttonText: "Začať trénovať"
     }
   ],
   
