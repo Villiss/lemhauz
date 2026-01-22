@@ -31,7 +31,7 @@ export function ProjectCard({
         src={imageSrc}
         alt={name}
         fill
-        className="object-cover md:transition-transform md:duration-500 md:group-hover:scale-110"
+        className="object-cover md:transition-transform md:duration-500 md:group-hover:scale-110 rounded-2xl"
         unoptimized={!isExternalImage}
         onError={(e) => {
           e.currentTarget.src = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80";
