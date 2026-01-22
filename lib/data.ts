@@ -185,23 +185,44 @@ export const companyData: CompanyData = {
     {
       id: "sotoPrive",
       name: "Soto Privé",
-      description: "Luxury Apartments in Spain",
+      description: "Luxusné Apartmány v Španielsku",
       image: "sotoprive.png",
       url: "https://www.sotoprive.com/"
     },
     {
       id: "nordites",
       name: "Nördites",
-      description: "Company Overview",
+      description: "Priemyselné tesnenia a spojovací materiál",
       image: "nordites.png",
       url: "https://www.nordites.com/"
     },
     {
       id: "akademia",
       name: "Akadémia max60",
-      description: "Motokárová akadémia",
+      description: "Oficiálna motokárová škola haly MAX60",
       image: "akademia.png",
       url: "https://app-akademia-max-60.vercel.app/login"
+    },
+    {
+      id: "beltat",
+      name: "Belt & At",
+      description: "Priemyselné tesnenia a spojovací materiál pre každý sektor",
+      image: "beltat.png",
+      url: "https://www.beltat.com/"
+    },
+    {
+      id: "twu",
+      name: "WTU",
+      description: "Travel with us",
+      image: "twu.png",
+      url: "https://www.twu.sk/"
+    },
+    {
+      id: "mmwallprint",
+      name: "mmwallprint",
+      description: "Revolúcia v Tlači stien",
+      image: "mmwallprint.png",
+      url: "https://www.mmwallprint.com/"
     }
   ],
   
