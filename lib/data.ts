@@ -66,31 +66,6 @@ export const companyData: CompanyData = {
         "Marketingové materiály"
       ],
       buttonText: "Začať projekt"
-    },
-    // {
-    //   id: "architecture",
-    //   title: "Podniková architektúra",
-    //   description: "Optimalizujeme vaše IT procesy a navrhneme architektúru, ktorá zlepší efektivitu vašej firmy",
-    //   icon: "Building2",
-    //   color: "green",
-    //   features: [
-    //     "Systémová architektúra",
-    //     "Procesné optimalizácie", 
-    //     "IT stratégie"
-    //   ]
-    // },
-    {
-      id: "motokart",
-      title: "Motokárová akadémia", 
-      description: "Zažite adrenalín a zdokonaľte svoje jazdné schopnosti v našej profesionálnej motokárovej akadémii",
-      icon: "Users",
-      color: "orange",
-      features: [
-        "Individuálne tréningy",
-        "Skupinové kurzy",
-        "Pokročilé techniky"
-      ],
-      buttonText: "Začať trénovať"
     }
   ],
   
@@ -231,11 +206,11 @@ export const companyData: CompanyData = {
   ],
   
   seo: {
-    title: "Lemhauz - IT Riešenia, Vývoj Aplikácií & Motokárová Akadémia",
-    description: "Specializujeme sa na vývoj mobilných aplikácií, webových stránok, grafický dizajn a podnikovú architektúru. Okrem toho prevadzujeme motokárovú akadémiu v Bratislave, Slovensko.",
-    keywords: "vývoj aplikácií, webové stránky, grafický dizajn, podniková architektúra, motokárová akadémia, React, Next.js, IT riešenia, Bratislava, Slovensko",
-    ogTitle: "Lemhauz - IT Riešenia & Motokárová Akadémia",
-    ogDescription: "Vytvárame digitálne riešenia pre váš úspech. Vývoj aplikácií, webov, dizajn a motokárová akadémia.",
+    title: "Lemhauz - IT Riešenia, Vývoj Aplikácií a Grafický Dizajn",
+    description: "Špecializujeme sa na vývoj mobilných aplikácií, webových stránok, grafický dizajn a podnikovú architektúru v Bratislave, Slovensko.",
+    keywords: "vývoj aplikácií, webové stránky, grafický dizajn, podniková architektúra, React, Next.js, IT riešenia, Bratislava, Slovensko",
+    ogTitle: "Lemhauz - IT Riešenia a Grafický Dizajn",
+    ogDescription: "Vytvárame digitálne riešenia pre váš úspech. Vývoj aplikácií, webov a dizajn.",
   }
 }
 
