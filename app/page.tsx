@@ -578,10 +578,10 @@ export default function HomePage() {
                   </div>
                 </div>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 leading-tight">
-                  {companyData.shortDescription.split('úspech')[0]}<span className="text-blue-600">úspech</span>
+                  Premeňte vaše vízie na <span className="text-blue-600">ziskové</span> digitálne produkty.
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 leading-relaxed">
-                  {companyData.description}
+                  Pomáhame firmám ako je tá vaša rásť v digitálnom svete. Navrhujeme a vyvíjame webové a mobilné aplikácie, ktoré vaši zákazníci milujú a ktoré prinášajú reálne výsledky.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -591,7 +591,7 @@ export default function HomePage() {
                   onClick={createScrollHandler('sluzby')}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  <span className="relative z-10">Preskúmajte naše služby</span>
+                  <span className="relative z-10">Zistite, ako na to</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
                 </Button>
                 <Button
@@ -629,9 +629,9 @@ export default function HomePage() {
       <section id="sluzby" className="py-20 bg-gradient-to-br from-slate-50/50 via-white/30 to-blue-50/40">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Komplexné IT riešenia</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Služby, ktoré naštartujú váš rast</h2>
             <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
-              Dostanete kompletné IT riešenia od vývoja aplikácií až po podnikovú architektúru a motokárovú akadémiu
+              Od nápadu, cez dizajn až po vývoj a nasadenie. Poskytujeme komplexné služby, ktoré premenia vaše požiadavky na funkčné a škálovateľné riešenia.
             </p>
           </div>
 
@@ -688,12 +688,10 @@ export default function HomePage() {
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">Vaši partneri pre technológie a dizajn</h2>
               <div className="space-y-4 text-slate-600">
                 <p>
-                  Spolupracujete s tímom skúsených vývojárov a dizajnérov s viac ako 3 rokmi praxe v oblasti IT riešení. 
-                  Dostanete komplexné služby od moderných aplikácií, webových stránok až po grafický dizajn a podnikovú architektúru.
+                Sme viac než len dodávatelia kódu. Sme váš strategický partner. Prinášame nielen technickú excelentnosť, ale aj hlboké pochopenie pre vaše biznis ciele.
                 </p>
                 <p>
-                  Okrem IT služieb vám ponúkame aj motokárovú akadémiu s profesionálnym tréningom jazdy. 
-                  Naša vízia je jasná - vytvárame riešenia a poskytujeme služby, ktoré vám pomôžu rásť a dosiahnuť úspech.
+                  Veríme, že najlepšie nápady vznikajú v inšpiratívnom prostredí - či už pri kóde, alebo na našej motokárovej dráhe.
                 </p>
               </div>
             </div>
@@ -754,9 +752,9 @@ export default function HomePage() {
       <section id="kontakt" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white">Začnime spoluprácu</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white">Máte nápad? Poďme ho zrealizovať.</h2>
             <p className="text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto">
-              Máte projekt alebo nápad? Povedzme si o vašich potrebách a nájdeme najlepšie riešenie
+              Povedzte nám o vašom cieli. My vám navrhneme cestu, ako ho dosiahnuť. Prvý krok je nezáväzná konzultácia, kde preberieme vaše možnosti.
             </p>
           </div>
 
