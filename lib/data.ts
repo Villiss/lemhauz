@@ -212,7 +212,7 @@ export const companyData: CompanyData = {
     },
     {
       id: "twu",
-      name: "WTU",
+      name: "TWU",
       description: "Travel with us",
       image: "twu.png",
       url: "https://www.twu.sk/"
