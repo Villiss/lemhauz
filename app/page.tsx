@@ -285,7 +285,7 @@ export default function HomePage() {
           )}
 
         {/* Contact Form - zachovaný s pridaným id */}
-        <div id="contact-form">
+        <div id="contact-form" className="max-w-4xl mx-auto px-4">
           <ContactFormDark />
         </div>
         
