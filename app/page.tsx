@@ -5,12 +5,12 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Logo } from "@/components/ui/logo"
 import { ServiceCard } from "@/components/ServiceCard"
 import { ContactCard } from "@/components/ContactCard"
-import { StatItem } from "@/components/StatItem"
 import { NavigationButton } from "@/components/NavigationButton"
 import { SocialLinks } from "@/components/SocialLinks"
 import { ReferenceCard } from "@/components/ReferenceCard"
 import { FeatureGrid } from "@/components/FeatureGrid"
 import { ContactFormDark } from "@/components/ContactFormDark"
+import { ProjectCard } from "@/components/ProjectCard"
 import {
   ArrowRight,
   Code,
@@ -58,7 +58,7 @@ export default function HomePage() {
       }
 
       // Track section viewing based on scroll position
-      const sections = ['hero', 'sluzby', 'o-nas', 'referencie', 'kontakt'];
+      const sections = ['hero', 'sluzby', 'o-nas', 'kontakt'];
       const currentSection = Math.floor((progress / 100) * sections.length);
       const sectionName = sections[currentSection];
       
@@ -285,7 +285,7 @@ export default function HomePage() {
           )}
 
         {/* Contact Form - zachovaný s pridaným id */}
-        <div id="contact-form">
+        <div id="contact-form" className="max-w-4xl mx-auto px-4">
           <ContactFormDark />
         </div>
         
@@ -578,10 +578,10 @@ export default function HomePage() {
                   </div>
                 </div>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 leading-tight">
-                  {companyData.shortDescription.split('úspech')[0]}<span className="text-blue-600">úspech</span>
+                  Premeňte vaše vízie na <span className="text-blue-600">ziskové</span> digitálne produkty.
                 </h1>
                 <p className="text-lg lg:text-xl text-slate-600 leading-relaxed">
-                  {companyData.description}
+                  Pomáhame firmám ako je tá vaša rásť v digitálnom svete. Navrhujeme a vyvíjame webové a mobilné aplikácie, ktoré vaši zákazníci milujú a ktoré prinášajú reálne výsledky.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -591,7 +591,7 @@ export default function HomePage() {
                   onClick={createScrollHandler('sluzby')}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  <span className="relative z-10">Preskúmajte naše služby</span>
+                  <span className="relative z-10">Zistite, ako na to</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
                 </Button>
                 <Button
@@ -604,10 +604,6 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                   <span className="relative z-10">Kontaktujte nás</span>
                 </Button>
-              </div>
-                            <div className="flex items-center space-x-4 sm:space-x-8 pt-4">
-                <StatItem value={companyData.stats.projects} label="Projektov" />
-                <StatItem value={companyData.stats.experience} label="Roky skúseností" />
               </div>
             </div>
             <div className="relative order-last lg:order-last">
@@ -633,17 +629,17 @@ export default function HomePage() {
       <section id="sluzby" className="py-20 bg-gradient-to-br from-slate-50/50 via-white/30 to-blue-50/40">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Komplexné IT riešenia</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Služby, ktoré naštartujú váš rast</h2>
             <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
-              Dostanete kompletné IT riešenia od vývoja aplikácií až po podnikovú architektúru a motokárovú akadémiu
+              Od nápadu, cez dizajn až po vývoj a nasadenie. Poskytujeme komplexné služby, ktoré premenia vaše požiadavky na funkčné a škálovateľné riešenia.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {companyData.services.map((service) => {
               const serviceData = getServiceData(service)
               return (
-                <div key={service.id} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]">
+                <div key={service.id}>
                   <ServiceCard
                     title={serviceData.title}
                     description={serviceData.description}
@@ -654,10 +650,32 @@ export default function HomePage() {
                     features={serviceData.features}
                     featureIcons={serviceData.featureIcons}
                     onButtonClick={() => scrollToSection('kontakt')}
+                    buttonText={serviceData.buttonText}
                   />
                 </div>
               )
             })}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="mt-20">
+            <div className="text-center space-y-4 mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Naše projekty</h3>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                Pozrite si ukážky našich realizovaných projektov
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {companyData.projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  name={project.name}
+                  description={project.description}
+                  image={project.image}
+                  url={project.url}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -670,12 +688,10 @@ export default function HomePage() {
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">Vaši partneri pre technológie a dizajn</h2>
               <div className="space-y-4 text-slate-600">
                 <p>
-                  Spolupracujete s tímom skúsených vývojárov a dizajnérov s viac ako 3 rokmi praxe v oblasti IT riešení. 
-                  Dostanete komplexné služby od moderných aplikácií, webových stránok až po grafický dizajn a podnikovú architektúru.
+                Sme viac než len dodávatelia kódu. Sme váš strategický partner. Prinášame nielen technickú excelentnosť, ale aj hlboké pochopenie pre vaše biznis ciele.
                 </p>
                 <p>
-                  Okrem IT služieb vám ponúkame aj motokárovú akadémiu s profesionálnym tréningom jazdy. 
-                  Naša vízia je jasná - vytvárame riešenia a poskytujeme služby, ktoré vám pomôžu rásť a dosiahnuť úspech.
+                  Veríme, že najlepšie nápady vznikajú v inšpiratívnom prostredí - či už pri kóde, alebo na našej motokárovej dráhe.
                 </p>
               </div>
             </div>
@@ -694,8 +710,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* References Section */}
-      <section id="referencie" className="py-20 bg-gradient-to-br from-slate-50/40 via-blue-50/30 to-purple-50/20">
+      {/* <section id="referencie" className="py-20 bg-gradient-to-br from-slate-50/40 via-blue-50/30 to-purple-50/20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900">Projekty</h2>
@@ -704,7 +719,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* References Grid */}
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {companyData.references.map((reference) => (
@@ -717,7 +731,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Why Choose Us Grid */}
           <div className="space-y-8">
             <div className="text-center">
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Prečo si vybrať nás?</h3>
@@ -733,19 +746,19 @@ export default function HomePage() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="kontakt" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white">Začnime spoluprácu</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white">Máte nápad? Poďme ho zrealizovať.</h2>
             <p className="text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto">
-              Máte projekt alebo nápad? Povedzme si o vašich potrebách a nájdeme najlepšie riešenie
+              Povedzte nám o vašom cieli. My vám navrhneme cestu, ako ho dosiahnuť. Prvý krok je nezáväzná konzultácia, kde preberieme vaše možnosti.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {companyData.contactCards.map((card, index) => (
               <ContactCard
                 key={card.title}

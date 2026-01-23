@@ -25,6 +25,7 @@ export interface Service {
   icon: string
   color: string
   features: string[]
+  buttonText?: string
 }
 
 export interface NavigationItem {
@@ -61,6 +62,14 @@ export interface WhyChooseUsItem {
   color: string
 }
 
+export interface Project {
+  id: string
+  name: string
+  description: string
+  image: string
+  url: string
+}
+
 export interface SEOData {
   title: string
   description: string
@@ -79,7 +88,6 @@ export interface CompanyData {
   website: string
   contact: ContactInfo
   social: SocialMedia
-  stats: Stats
   technologies: string[]
   designTools: string[]
   services: Service[]
@@ -88,6 +96,7 @@ export interface CompanyData {
   contactCards: ContactCard[]
   socialLinks: SocialLink[]
   whyChooseUs: WhyChooseUsItem[]
+  projects: Project[]
   seo: SEOData
 }
 
@@ -102,6 +111,7 @@ export interface ServiceCardProps {
   features: string[]
   featureIcons: LucideIcon[]
   onButtonClick: () => void
+  buttonText?: string
   serviceId?: string
 }
 
@@ -172,6 +182,14 @@ export interface ServiceData {
   features: string[]
   featureIcons: LucideIcon[]
   color: string
+  buttonText?: string
+}
+
+export interface ProjectCardProps {
+  name: string
+  description: string
+  image: string
+  url: string
 }
 
 // Color Classes Type

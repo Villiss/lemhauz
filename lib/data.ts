@@ -1,7 +1,7 @@
 import type { CompanyData } from "./types"
 
-// Maintenance mode configuration
-export const MAINTENANCE_MODE = true; // Zmeniť na true pre aktivovanie maintenance módu
+// Maintenance mode configuration - reads from env variable
+export const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true"
 
 export const companyData: CompanyData = {
   name: "Lemhauz",
@@ -24,11 +24,6 @@ export const companyData: CompanyData = {
   },
   
   website: "https://lemhauz.sk",
-  
-  stats: {
-    projects: "50+",
-    experience: "3+",
-  },
   
   technologies: [
     "React",
@@ -56,7 +51,8 @@ export const companyData: CompanyData = {
         "iOS & Android aplikácie",
         "Responzívne webové stránky", 
         "E-commerce riešenia"
-      ]
+      ],
+      buttonText: "Začať projekt"
     },
     {
       id: "design",
@@ -68,38 +64,14 @@ export const companyData: CompanyData = {
         "Firemná identita",
         "Logo dizajn",
         "Marketingové materiály"
-      ]
-    },
-    // {
-    //   id: "architecture",
-    //   title: "Podniková architektúra",
-    //   description: "Optimalizujeme vaše IT procesy a navrhneme architektúru, ktorá zlepší efektivitu vašej firmy",
-    //   icon: "Building2",
-    //   color: "green",
-    //   features: [
-    //     "Systémová architektúra",
-    //     "Procesné optimalizácie", 
-    //     "IT stratégie"
-    //   ]
-    // },
-    {
-      id: "motokart",
-      title: "Motokárová akadémia", 
-      description: "Zažite adrenalín a zdokonaľte svoje jazdné schopnosti v našej profesionálnej motokárovej akadémii",
-      icon: "Users",
-      color: "orange",
-      features: [
-        "Individuálne tréningy",
-        "Skupinové kurzy",
-        "Pokročilé techniky"
-      ]
+      ],
+      buttonText: "Začať projekt"
     }
   ],
   
   navigation: [
     { id: "sluzby", label: "Služby", icon: "Code" },
     { id: "o-nas", label: "O nás", icon: "Users" },
-    { id: "referencie", label: "Referencie", icon: "Star" },
     { id: "kontakt", label: "Kontakt", icon: "Mail" }
   ],
   
@@ -201,13 +173,65 @@ export const companyData: CompanyData = {
       color: "orange"
     }
   ],
+
+  projects: [
+    {
+      id: "plastRenew",
+      name: "Plast Renew",
+      description: "Technológia chemického recyklovania",
+      image: "plastrenew.png",
+      url: "https://www.plastrenew.com/sk"
+    },
+    {
+      id: "sotoPrive",
+      name: "Soto Privé",
+      description: "Luxusné Apartmány v Španielsku",
+      image: "sotoprive.png",
+      url: "https://www.sotoprive.com/"
+    },
+    {
+      id: "nordites",
+      name: "Nördites",
+      description: "Priemyselné tesnenia a spojovací materiál",
+      image: "nordites.png",
+      url: "https://www.nordites.com/"
+    },
+    {
+      id: "akademia",
+      name: "Akadémia max60",
+      description: "Oficiálna motokárová škola haly MAX60",
+      image: "akademia.png",
+      url: "https://app-akademia-max-60.vercel.app/login"
+    },
+    {
+      id: "beltat",
+      name: "Belt & At",
+      description: "Priemyselné tesnenia a spojovací materiál pre každý sektor",
+      image: "beltat.png",
+      url: "https://www.beltat.com/"
+    },
+    {
+      id: "twu",
+      name: "WTU",
+      description: "Travel with us",
+      image: "twu.png",
+      url: "https://www.twu.sk/"
+    },
+    {
+      id: "mmwallprint",
+      name: "mmwallprint",
+      description: "Revolúcia v Tlači stien",
+      image: "mmwallprint.png",
+      url: "https://www.mmwallprint.com/"
+    }
+  ],
   
   seo: {
-    title: "Lemhauz - IT Riešenia, Vývoj Aplikácií & Motokárová Akadémia",
-    description: "Specializujeme sa na vývoj mobilných aplikácií, webových stránok, grafický dizajn a podnikovú architektúru. Okrem toho prevadzujeme motokárovú akadémiu v Bratislave, Slovensko.",
-    keywords: "vývoj aplikácií, webové stránky, grafický dizajn, podniková architektúra, motokárová akadémia, React, Next.js, IT riešenia, Bratislava, Slovensko",
-    ogTitle: "Lemhauz - IT Riešenia & Motokárová Akadémia",
-    ogDescription: "Vytvárame digitálne riešenia pre váš úspech. Vývoj aplikácií, webov, dizajn a motokárová akadémia.",
+    title: "Lemhauz - IT Riešenia, Vývoj Aplikácií a Grafický Dizajn",
+    description: "Špecializujeme sa na vývoj mobilných aplikácií, webových stránok, grafický dizajn a podnikovú architektúru v Bratislave, Slovensko.",
+    keywords: "vývoj aplikácií, webové stránky, grafický dizajn, podniková architektúra, React, Next.js, IT riešenia, Bratislava, Slovensko",
+    ogTitle: "Lemhauz - IT Riešenia a Grafický Dizajn",
+    ogDescription: "Vytvárame digitálne riešenia pre váš úspech. Vývoj aplikácií, webov a dizajn.",
   }
 }
 
