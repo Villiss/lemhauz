@@ -1,7 +1,7 @@
 import type { CompanyData } from "./types"
 
-// Maintenance mode configuration
-export const MAINTENANCE_MODE = false; // Zmeniť na true pre aktivovanie maintenance módu
+// Maintenance mode configuration - reads from env variable
+export const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true"
 
 export const companyData: CompanyData = {
   name: "Lemhauz",
