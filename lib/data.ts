@@ -201,7 +201,7 @@ export const companyData: CompanyData = {
       name: "Akadémia max60",
       description: "Oficiálna motokárová škola haly MAX60",
       image: "akademia.png",
-      url: "https://app-akademia-max-60.vercel.app/login"
+      url: "https://app.max60.academy/"
     },
     {
       id: "beltat",
@@ -223,6 +223,28 @@ export const companyData: CompanyData = {
       description: "Revolúcia v Tlači stien",
       image: "mmwallprint.png",
       url: "https://www.mmwallprint.com/"
+    },
+    {
+      id: "veteranyzb",
+      name: "Veterány Záhorská Bystrica",
+      description: "Veterány Záhorská Bystrica",
+      image: "veteranyzb.png",
+      url: "https://www.veteranyzb.sk/"
+    },
+    {
+      id: "terapiatatiana",
+      name: "Terapia Tatiana",
+      description: "Kraniosakralná terapia",
+      image: "terapiatatiana.png",
+      url: "https://www.terapiatatiana.sk/"
+    },
+    {
+      id: "jxmotion",
+      name: "JX Motion eshop",
+      description: "Eshop pre predaj motokár a súčiastok Tillotson",
+      image: "jxmotion.png",
+      url: "https://jxmotion-shop.vercel.app/"
+      // url: "https://eshop.jxmotion.sk/"
     }
   ],
   
