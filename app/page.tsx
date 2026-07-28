@@ -665,7 +665,7 @@ export default function HomePage() {
                 Pozrite si ukážky našich realizovaných projektov
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
               {companyData.projects.map((project) => (
                 <ProjectCard
                   key={project.id}

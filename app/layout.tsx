@@ -4,6 +4,10 @@ import "./globals.css";
 import { companyData } from "@/lib/data";
 import { Analytics } from "@vercel/analytics/next"
 
+// Required so the CSP nonce set per-request in middleware.ts stays valid —
+// a statically rendered page would bake in a stale nonce.
+export const dynamic = "force-dynamic";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -1,21 +1,9 @@
 import type { NextConfig } from "next";
 
-const contentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self';
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' data: https://images.unsplash.com;
-  font-src 'self';
-  connect-src 'self' https://vitals.vercel-insights.com;
-  frame-src 'none';
-  frame-ancestors 'none';
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-`.replace(/\s{2,}/g, ' ').trim();
-
+// Content-Security-Policy is set per-request (with a nonce) in middleware.ts,
+// since Next.js needs a unique nonce per request to allow its own inline
+// hydration scripts under a strict script-src.
 const securityHeaders = [
-  { key: 'Content-Security-Policy', value: contentSecurityPolicy },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
